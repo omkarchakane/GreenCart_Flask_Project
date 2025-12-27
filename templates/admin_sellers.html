@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sellers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <h3 class="text-success">Registered Sellers</h3>
+        <a href="/admin-dashboard" class="btn btn-secondary">⬅ Back</a> <hr>
+        <table class="table table-bordered">
+            <tr class="table-success">
+                <th>Name</th><th>Email</th><th>Location</th><th>Action</th>
+            </tr>
+            {% for s in sellers %}
+            <tr>
+                <td>{{s['name']}}</td>
+                <td>{{s['email']}}</td>
+                <td>{{s['location']}}</td>
+                <td>
+                    <a href="/approve/{{s['id']}}" class="btn btn-success btn-sm">Approve</a>
+                    <a href="/reject/{{s['id']}}" class="btn btn-danger btn-sm">Reject</a>    
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+   
+
+    </div>
+    
+</body>
+</html>
