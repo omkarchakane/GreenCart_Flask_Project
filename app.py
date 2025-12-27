@@ -9,6 +9,11 @@ app.config['UPLOAD_FOLDER'] = os.path.join("static", "uploads")#? Path to save f
 app.secret_key = "my_secret_omkar_123" 
 create_tables() 
 
+#? Deployement
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
+
 @app.route('/')  #? connect URL with function
 def home():
     return render_template("index.html")
