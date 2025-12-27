@@ -1,4 +1,4 @@
 flask
-flask-session
+gunicorn
 werkzeug
-sqlite3-bro
+Pillow
