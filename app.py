@@ -248,6 +248,26 @@ def seller_orders():
     con.close()
     return render_template("seller_orders.html", orders=rows)
 
+#!--------------------------------------------------------------------------------------------
+@app.route('/admin-products')
+def admin_products():
+    con = connect_db()
+    cur = con.cursor()
+    cur.execute("SELECT * FROM products ORDER BY id DESC")
+    rows = cur.fetchall()
+    con.close()
+    return render_template("admin_products.html", products=rows)
+@app.route('/admin-delete/<int:pid>')
+def admin_delete(pid):
+    con = connect_db()
+    cur = con.cursor()
+    cur.execute("DELETE FROM products WHERE id=?", (pid,))
+    con.commit()
+    con.close()
+    return redirect('/admin-products')
+
+
+
 
 if __name__=='__main__':
     app.run(debug=True)
